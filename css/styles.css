@@ -1715,3 +1715,121 @@ select {
         margin-bottom: 4rem;
     }
 }
+/* ==========================================================
+   INTERACTIVE ARCHIVE MAP
+   ========================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.map-frame {
+    position: relative;
+    width: 100%;
+}
+
+.map-frame .world-map {
+    width: 100%;
+    display: block;
+}
+
+.map-hotspot {
+    position: absolute;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+}
+
+.hotspot-marker {
+    width: 18px;
+    height: 18px;
+
+    border: 2px solid #f2d67c;
+    border-radius: 50%;
+
+    background: rgba(10, 13, 29, 0.75);
+
+    box-shadow:
+        0 0 0 5px rgba(199, 162, 75, 0.18),
+        0 0 18px rgba(242, 214, 124, 0.8);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.hotspot-label {
+    margin-top: 0.7rem;
+    padding: 0.35rem 0.65rem;
+
+    border: 1px solid rgba(199, 162, 75, 0.45);
+    background: rgba(8, 10, 22, 0.9);
+
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+
+    opacity: 0;
+    transform: translateY(5px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.map-hotspot:hover .hotspot-marker,
+.map-hotspot:focus-visible .hotspot-marker {
+    transform: scale(1.25);
+
+    box-shadow:
+        0 0 0 7px rgba(199, 162, 75, 0.22),
+        0 0 28px rgba(242, 214, 124, 1);
+}
+
+.map-hotspot:hover .hotspot-label,
+.map-hotspot:focus-visible .hotspot-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hotspot-edenaren {
+    left: 43%;
+    top: 43%;
+}
+
+.hotspot-lyshal {
+    left: 66%;
+    top: 39%;
+}
+
+.hotspot-dorshyllwyn {
+    left: 65%;
+    top: 66%;
+}
+
+.map-instruction {
+    margin: 1.5rem 0 0;
+
+    color: rgba(231, 226, 211, 0.62);
+    font-size: 0.82rem;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .hotspot-marker {
+        width: 14px;
+        height: 14px;
+    }
+
+    .hotspot-label {
+        display: none;
+    }
+}
