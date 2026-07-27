@@ -105,31 +105,33 @@ a {
 }
 
 
-/* Subtle background stars */
+/* ---------------------------------------------------------
+   ANIMATED STAR FIELD
+   --------------------------------------------------------- */
 
 .star-field,
 .star-field::before,
 .star-field::after {
   position: absolute;
-  inset: 0;
+  inset: -8%;
 
   content: "";
   pointer-events: none;
 }
 
 .star-field {
-  opacity: 0.55;
+  opacity: 0.72;
 
   background-image:
     radial-gradient(
       circle,
-      rgba(228, 198, 116, 0.8) 0 1px,
-      transparent 1.4px
+      rgba(228, 198, 116, 0.9) 0 1px,
+      transparent 1.6px
     ),
     radial-gradient(
       circle,
-      rgba(247, 242, 232, 0.62) 0 0.8px,
-      transparent 1.2px
+      rgba(247, 242, 232, 0.72) 0 0.8px,
+      transparent 1.3px
     );
 
   background-position:
@@ -139,39 +141,85 @@ a {
   background-size:
     175px 175px,
     235px 235px;
+
+  animation:
+    stars-drift-primary 34s linear infinite,
+    stars-breathe 5s ease-in-out infinite alternate;
+
+  will-change:
+    background-position,
+    opacity;
 }
 
 .star-field::before {
-  opacity: 0.34;
+  opacity: 0.52;
 
   background-image:
     radial-gradient(
       circle,
-      rgba(199, 162, 75, 0.72) 0 1px,
-      transparent 1.5px
+      rgba(199, 162, 75, 0.88) 0 1.15px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle,
+      rgba(235, 224, 194, 0.68) 0 0.7px,
+      transparent 1.25px
     );
 
-  background-position: 27px 42px;
-  background-size: 310px 310px;
+  background-position:
+    27px 42px,
+    130px 15px;
 
-  animation: star-drift 28s linear infinite;
+  background-size:
+    310px 310px,
+    390px 390px;
+
+  animation:
+    stars-drift-secondary 48s linear infinite,
+    stars-twinkle 3.8s ease-in-out infinite alternate;
+
+  will-change:
+    background-position,
+    opacity;
 }
 
 .star-field::after {
-  opacity: 0.18;
+  opacity: 0.4;
 
-  background:
+  background-image:
     radial-gradient(
-      ellipse at center,
-      rgba(228, 198, 116, 0.16) 0%,
-      transparent 62%
+      circle,
+      rgba(255, 239, 186, 0.95) 0 1.8px,
+      rgba(228, 198, 116, 0.22) 2px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle,
+      rgba(247, 242, 232, 0.82) 0 1.25px,
+      transparent 3px
     );
 
-  animation: soft-pulse 7s ease-in-out infinite;
+  background-position:
+    12% 23%,
+    71% 61%;
+
+  background-size:
+    520px 520px,
+    670px 670px;
+
+  animation:
+    bright-stars-drift 62s linear infinite,
+    bright-stars-twinkle 4.6s ease-in-out infinite alternate;
+
+  will-change:
+    background-position,
+    opacity;
 }
 
 
-/* Main hero content */
+/* ---------------------------------------------------------
+   HERO CONTENT
+   --------------------------------------------------------- */
 
 .hero-content {
   position: relative;
@@ -187,13 +235,17 @@ a {
 }
 
 
-/* Logo container with moonlit glow */
+/* ---------------------------------------------------------
+   LOGO
+   --------------------------------------------------------- */
 
 .hero-logo-wrap {
   position: relative;
 
   width: min(62vw, 520px);
   margin: 0 auto 3.25rem;
+
+  transform: translateX(-8px);
 
   isolation: isolate;
 }
@@ -243,7 +295,9 @@ a {
 }
 
 
-/* Hero tagline */
+/* ---------------------------------------------------------
+   TAGLINE
+   --------------------------------------------------------- */
 
 .tagline {
   max-width: 650px;
@@ -261,25 +315,36 @@ a {
   text-shadow:
     0 1px 12px rgba(0, 0, 0, 0.65);
 
-  animation: content-arrival 1.2s 0.35s ease both;
+  animation:
+    content-arrival
+    1.2s
+    0.35s
+    ease
+    both;
 }
 
 
-/* Archive button */
+/* ---------------------------------------------------------
+   ARCHIVE BUTTON
+   --------------------------------------------------------- */
 
 .archive-button {
-  min-width: 238px;
+  position: relative;
 
-  display: inline-flex;
+  min-width: 252px;
+
+  display: grid;
+  grid-template-columns: 18px auto 18px;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  column-gap: 0.75rem;
 
-  padding: 1.05rem 1.85rem;
+  padding: 1.05rem 1.6rem;
 
   border: 1px solid rgba(199, 162, 75, 0.68);
 
   color: var(--ivory);
+
   background:
     linear-gradient(
       180deg,
@@ -305,17 +370,39 @@ a {
     box-shadow var(--transition),
     transform var(--transition);
 
-  animation: content-arrival 1.2s 0.55s ease both;
+  animation:
+    content-arrival
+    1.2s
+    0.55s
+    ease
+    both;
+}
+
+.archive-button::after {
+  content: "✦";
+
+  width: 18px;
+
+  visibility: hidden;
 }
 
 .button-star {
+  width: 18px;
+
   color: var(--gold-light);
+
   font-size: 0.78rem;
+  text-align: center;
 
   text-shadow:
     0 0 12px rgba(228, 198, 116, 0.4);
 
-  transition: transform var(--transition);
+  transition:
+    transform var(--transition);
+}
+
+.button-label {
+  text-align: center;
 }
 
 .archive-button:hover,
@@ -340,11 +427,15 @@ a {
 
 .archive-button:hover .button-star,
 .archive-button:focus-visible .button-star {
-  transform: rotate(45deg) scale(1.08);
+  transform:
+    rotate(45deg)
+    scale(1.08);
 }
 
 
-/* Scroll indicator */
+/* ---------------------------------------------------------
+   SCROLL INDICATOR
+   --------------------------------------------------------- */
 
 .scroll-indicator {
   position: absolute;
@@ -376,12 +467,17 @@ a {
   transform: translateX(-50%);
 
   border-radius: 10px;
+
   background: var(--gold-light);
 
   box-shadow:
     0 0 10px rgba(228, 198, 116, 0.36);
 
-  animation: scroll-prompt 2s ease-in-out infinite;
+  animation:
+    scroll-prompt
+    2s
+    ease-in-out
+    infinite;
 }
 
 
@@ -428,8 +524,11 @@ a {
       transparent 1.2px
     );
 
-  background-position: 45px 70px;
-  background-size: 265px 265px;
+  background-position:
+    45px 70px;
+
+  background-size:
+    265px 265px;
 }
 
 .discover-section::after {
@@ -442,6 +541,7 @@ a {
   height: 1px;
 
   content: "";
+
   transform: translateX(-50%);
 
   background:
@@ -475,6 +575,7 @@ a {
     );
 
   filter: blur(14px);
+
   pointer-events: none;
 }
 
@@ -519,7 +620,9 @@ a {
 }
 
 
-/* Decorative divider */
+/* ---------------------------------------------------------
+   DECORATIVE DIVIDER
+   --------------------------------------------------------- */
 
 .ornamental-divider {
   width: min(280px, 70vw);
@@ -550,6 +653,7 @@ a {
 
 .divider-star {
   color: var(--gold-light);
+
   font-size: 0.75rem;
 
   text-shadow:
@@ -557,7 +661,9 @@ a {
 }
 
 
-/* Welcome text */
+/* ---------------------------------------------------------
+   WELCOME TEXT
+   --------------------------------------------------------- */
 
 .welcome-copy {
   max-width: 690px;
@@ -584,13 +690,17 @@ a {
 
 
 /* ---------------------------------------------------------
-   ANIMATION
+   ANIMATIONS
    --------------------------------------------------------- */
 
 @keyframes logo-arrival {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.985);
+
+    transform:
+      translateY(12px)
+      scale(0.985);
+
     filter:
       blur(3px)
       drop-shadow(
@@ -600,49 +710,118 @@ a {
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+
+    transform:
+      translateY(0)
+      scale(1);
   }
 }
 
 @keyframes content-arrival {
   from {
     opacity: 0;
-    transform: translateY(12px);
+
+    transform:
+      translateY(12px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+      translateY(0);
   }
 }
 
-@keyframes soft-pulse {
-  0%,
-  100% {
-    opacity: 0.12;
-    transform: scale(0.98);
-  }
-
-  50% {
-    opacity: 0.22;
-    transform: scale(1.02);
-  }
-}
-
-@keyframes star-drift {
+@keyframes stars-drift-primary {
   from {
-    transform: translateY(0);
+    background-position:
+      0 0,
+      65px 82px;
   }
 
   to {
-    transform: translateY(-38px);
+    background-position:
+      42px -95px,
+      18px -72px;
+  }
+}
+
+@keyframes stars-drift-secondary {
+  from {
+    background-position:
+      27px 42px,
+      130px 15px;
+  }
+
+  to {
+    background-position:
+      -54px -120px,
+      185px -92px;
+  }
+}
+
+@keyframes bright-stars-drift {
+  from {
+    background-position:
+      12% 23%,
+      71% 61%;
+  }
+
+  to {
+    background-position:
+      18% 5%,
+      65% 42%;
+  }
+}
+
+@keyframes stars-breathe {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 0.78;
+  }
+}
+
+@keyframes stars-twinkle {
+  0% {
+    opacity: 0.22;
+  }
+
+  45% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0.34;
+  }
+}
+
+@keyframes bright-stars-twinkle {
+  0% {
+    opacity: 0.18;
+    filter: brightness(0.85);
+  }
+
+  50% {
+    opacity: 0.52;
+    filter: brightness(1.3);
+  }
+
+  100% {
+    opacity: 0.27;
+    filter: brightness(1);
   }
 }
 
 @keyframes scroll-prompt {
   0% {
     opacity: 0;
-    transform: translate(-50%, 0);
+
+    transform:
+      translate(-50%, 0);
   }
 
   35% {
@@ -651,7 +830,9 @@ a {
 
   100% {
     opacity: 0;
-    transform: translate(-50%, 18px);
+
+    transform:
+      translate(-50%, 18px);
   }
 }
 
@@ -668,6 +849,8 @@ a {
   .hero-logo-wrap {
     width: min(76vw, 500px);
     margin-bottom: 2.75rem;
+
+    transform: translateX(-5px);
   }
 
   .discover-section {
@@ -692,6 +875,8 @@ a {
   .hero-logo-wrap {
     width: min(92vw, 450px);
     margin-bottom: 2.4rem;
+
+    transform: translateX(-3px);
   }
 
   .tagline {
@@ -702,11 +887,11 @@ a {
   }
 
   .archive-button {
-    min-width: 218px;
+    min-width: 228px;
 
     padding:
       1rem
-      1.4rem;
+      1.25rem;
 
     font-size: 0.68rem;
     letter-spacing: 0.17em;
