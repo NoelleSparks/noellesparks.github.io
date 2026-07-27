@@ -352,13 +352,17 @@ select {
   position: relative;
   z-index: 2;
 
-  width: min(100%, 760px);
+  width: min(100%, 900px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   text-align: center;
+
+  margin: 0 auto;
+  padding-top: 8vh;
 }
 
 
@@ -367,11 +371,9 @@ select {
 .hero-logo-wrap {
   position: relative;
 
-  width: min(85vw, 960px);
+  width: min(85vw, 760px);
 
-  margin: 0 auto 3.25rem;
-
-  transform: translateX(-8px);
+  margin: 0 auto 3rem;
 
   isolation: isolate;
 }
@@ -1392,13 +1394,10 @@ select {
   }
 
   .hero-logo-wrap {
-    width: min(76vw, 500px);
+  width: min(76vw, 500px);
 
-    margin-bottom: 2.75rem;
-
-    transform:
-      translateX(-5px);
-  }
+  margin-bottom: 2.75rem;
+}
 
   .discover-section {
     padding:
@@ -1433,14 +1432,11 @@ select {
       5.5rem;
   }
 
-  .hero-logo-wrap {
-    width: min(92vw, 450px);
+.hero-logo-wrap {
+  width: min(92vw, 450px);
 
-    margin-bottom: 2.4rem;
-
-    transform:
-      translateX(-3px);
-  }
+  margin-bottom: 2.4rem;
+}
 
   .tagline {
     margin-bottom: 2.25rem;
