@@ -1,108 +1,764 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="The official website of fantasy author Noelle Sparks."
-  >
-
-  <title>Noelle Sparks | Fantasy Author</title>
-
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-
-  <main>
-
-    <!-- HERO -->
-    <section class="hero" id="home">
-
-      <div class="star-field" aria-hidden="true"></div>
-
-      <div class="hero-content">
-
-        <div class="hero-logo-wrap">
-          <img
-            src="assets/images/Untitled%20design%20(39).png"
-            alt="Noelle Sparks"
-            class="hero-logo"
-          >
-        </div>
-
-        <p class="tagline">
-          Some stories are discovered rather than written.
-        </p>
-
-        <a href="#discover" class="archive-button">
-          <span class="button-star" aria-hidden="true">✦</span>
-          <span>Enter the Archive</span>
-        </a>
-
-      </div>
-
-      <a
-        href="#discover"
-        class="scroll-indicator"
-        aria-label="Continue to the next section"
-      >
-        <span></span>
-      </a>
-
-    </section>
+/* =========================================================
+   NOELLE SPARKS
+   Elegant Wonder — Homepage
+   ========================================================= */
 
 
-    <!-- DISCOVERY / WELCOME -->
-    <section class="discover-section" id="discover">
+/* ---------------------------------------------------------
+   DESIGN TOKENS
+   --------------------------------------------------------- */
 
-      <div class="discover-glow" aria-hidden="true"></div>
+:root {
+  --midnight: #070d19;
+  --deep-night: #0c1424;
+  --night-blue: #111b2d;
 
-      <div class="discover-content">
+  --gold: #c7a24b;
+  --gold-light: #e4c674;
+  --gold-dark: #816321;
 
-        <p class="section-kicker">
-          Beyond the Known Path
-        </p>
+  --ivory: #f7f2e8;
+  --mist: #d8d1c5;
+  --muted-text: #aaa396;
 
-        <h1>
-          You have found<br>
-          the threshold.
-        </h1>
+  --serif:
+    Georgia,
+    "Times New Roman",
+    Times,
+    serif;
 
-        <div class="ornamental-divider" aria-hidden="true">
-          <span></span>
-          <span class="divider-star">✦</span>
-          <span></span>
-        </div>
+  --transition: 280ms ease;
+}
 
-        <div class="welcome-copy">
 
-          <p>
-            There are places where maps grow old before the forests do.
-          </p>
+/* ---------------------------------------------------------
+   RESET
+   --------------------------------------------------------- */
 
-          <p>
-            Where forgotten names still wait to be spoken, and the
-            smallest light may become the beginning of everything.
-          </p>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-          <p class="welcome-closing">
-            Welcome, traveler.
-          </p>
+html {
+  scroll-behavior: smooth;
+}
 
-        </div>
+body {
+  margin: 0;
+  min-width: 320px;
 
-      </div>
+  color: var(--ivory);
+  background: var(--midnight);
 
-    </section>
+  font-family: var(--serif);
+  overflow-x: hidden;
+}
 
-  </main>
+img {
+  display: block;
+  max-width: 100%;
+}
 
-</body>
-</html>
+a {
+  color: inherit;
+}
+
+
+/* ---------------------------------------------------------
+   HERO
+   --------------------------------------------------------- */
+
+.hero {
+  position: relative;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4rem 1.5rem 6rem;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 26% 32%,
+      rgba(76, 93, 130, 0.14) 0%,
+      rgba(25, 38, 64, 0.07) 26%,
+      transparent 52%
+    ),
+    radial-gradient(
+      circle at 75% 68%,
+      rgba(49, 67, 101, 0.09) 0%,
+      transparent 48%
+    ),
+    linear-gradient(
+      135deg,
+      var(--night-blue) 0%,
+      var(--deep-night) 46%,
+      var(--midnight) 100%
+    );
+}
+
+
+/* Subtle background stars */
+
+.star-field,
+.star-field::before,
+.star-field::after {
+  position: absolute;
+  inset: 0;
+
+  content: "";
+  pointer-events: none;
+}
+
+.star-field {
+  opacity: 0.55;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(228, 198, 116, 0.8) 0 1px,
+      transparent 1.4px
+    ),
+    radial-gradient(
+      circle,
+      rgba(247, 242, 232, 0.62) 0 0.8px,
+      transparent 1.2px
+    );
+
+  background-position:
+    0 0,
+    65px 82px;
+
+  background-size:
+    175px 175px,
+    235px 235px;
+}
+
+.star-field::before {
+  opacity: 0.34;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(199, 162, 75, 0.72) 0 1px,
+      transparent 1.5px
+    );
+
+  background-position: 27px 42px;
+  background-size: 310px 310px;
+
+  animation: star-drift 28s linear infinite;
+}
+
+.star-field::after {
+  opacity: 0.18;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(228, 198, 116, 0.16) 0%,
+      transparent 62%
+    );
+
+  animation: soft-pulse 7s ease-in-out infinite;
+}
+
+
+/* Main hero content */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 760px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* Logo container with moonlit glow */
+
+.hero-logo-wrap {
+  position: relative;
+
+  width: min(62vw, 520px);
+  margin: 0 auto 3.25rem;
+
+  isolation: isolate;
+}
+
+.hero-logo-wrap::before {
+  position: absolute;
+  z-index: -1;
+
+  content: "";
+
+  top: 50%;
+  left: 50%;
+
+  width: 130%;
+  aspect-ratio: 1.3 / 1;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255, 245, 220, 0.075) 0%,
+      rgba(255, 245, 220, 0.025) 38%,
+      transparent 72%
+    );
+
+  filter: blur(8px);
+}
+
+.hero-logo {
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 28px rgba(199, 162, 75, 0.11)
+    )
+    drop-shadow(
+      0 0 70px rgba(220, 185, 80, 0.045)
+    );
+
+  animation: logo-arrival 1.4s ease both;
+}
+
+
+/* Hero tagline */
+
+.tagline {
+  max-width: 650px;
+
+  margin: 0 auto 2.75rem;
+
+  color: var(--ivory);
+
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  font-style: italic;
+  line-height: 1.65;
+
+  text-wrap: balance;
+
+  text-shadow:
+    0 1px 12px rgba(0, 0, 0, 0.65);
+
+  animation: content-arrival 1.2s 0.35s ease both;
+}
+
+
+/* Archive button */
+
+.archive-button {
+  min-width: 238px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+
+  padding: 1.05rem 1.85rem;
+
+  border: 1px solid rgba(199, 162, 75, 0.68);
+
+  color: var(--ivory);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(199, 162, 75, 0.055),
+      rgba(199, 162, 75, 0.018)
+    );
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.012),
+    0 8px 28px rgba(0, 0, 0, 0.18);
+
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+
+  animation: content-arrival 1.2s 0.55s ease both;
+}
+
+.button-star {
+  color: var(--gold-light);
+  font-size: 0.78rem;
+
+  text-shadow:
+    0 0 12px rgba(228, 198, 116, 0.4);
+
+  transition: transform var(--transition);
+}
+
+.archive-button:hover,
+.archive-button:focus-visible {
+  color: #fffaf0;
+
+  border-color: var(--gold-light);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(199, 162, 75, 0.13),
+      rgba(199, 162, 75, 0.055)
+    );
+
+  box-shadow:
+    0 0 30px rgba(199, 162, 75, 0.1),
+    0 12px 35px rgba(0, 0, 0, 0.28);
+
+  transform: translateY(-2px);
+}
+
+.archive-button:hover .button-star,
+.archive-button:focus-visible .button-star {
+  transform: rotate(45deg) scale(1.08);
+}
+
+
+/* Scroll indicator */
+
+.scroll-indicator {
+  position: absolute;
+  z-index: 3;
+
+  left: 50%;
+  bottom: 1.5rem;
+
+  width: 28px;
+  height: 44px;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgba(199, 162, 75, 0.28);
+  border-radius: 20px;
+
+  opacity: 0.72;
+}
+
+.scroll-indicator span {
+  position: absolute;
+
+  top: 8px;
+  left: 50%;
+
+  width: 3px;
+  height: 7px;
+
+  transform: translateX(-50%);
+
+  border-radius: 10px;
+  background: var(--gold-light);
+
+  box-shadow:
+    0 0 10px rgba(228, 198, 116, 0.36);
+
+  animation: scroll-prompt 2s ease-in-out infinite;
+}
+
+
+/* ---------------------------------------------------------
+   DISCOVERY SECTION
+   --------------------------------------------------------- */
+
+.discover-section {
+  position: relative;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8rem 1.5rem;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(28, 42, 67, 0.46) 0%,
+      rgba(12, 20, 36, 0.96) 45%,
+      var(--midnight) 82%
+    );
+}
+
+.discover-section::before {
+  position: absolute;
+  inset: 0;
+
+  content: "";
+
+  opacity: 0.3;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(228, 198, 116, 0.62) 0 0.8px,
+      transparent 1.2px
+    );
+
+  background-position: 45px 70px;
+  background-size: 265px 265px;
+}
+
+.discover-section::after {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: min(82%, 1100px);
+  height: 1px;
+
+  content: "";
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(199, 162, 75, 0.28),
+      transparent
+    );
+}
+
+.discover-glow {
+  position: absolute;
+
+  top: 48%;
+  left: 50%;
+
+  width: min(90vw, 900px);
+  aspect-ratio: 1.8 / 1;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(81, 99, 135, 0.1) 0%,
+      rgba(45, 60, 91, 0.045) 42%,
+      transparent 72%
+    );
+
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+.discover-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(100%, 820px);
+
+  text-align: center;
+}
+
+.section-kicker {
+  margin: 0 0 1.5rem;
+
+  color: var(--gold-light);
+
+  text-transform: uppercase;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+
+  text-shadow:
+    0 0 18px rgba(199, 162, 75, 0.18);
+}
+
+.discover-content h1 {
+  margin: 0;
+
+  color: var(--ivory);
+
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+  line-height: 1.03;
+  letter-spacing: -0.025em;
+
+  text-wrap: balance;
+
+  text-shadow:
+    0 5px 35px rgba(0, 0, 0, 0.32);
+}
+
+
+/* Decorative divider */
+
+.ornamental-divider {
+  width: min(280px, 70vw);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  margin: 2.5rem auto;
+}
+
+.ornamental-divider > span:not(.divider-star) {
+  flex: 1;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(199, 162, 75, 0.55)
+    );
+}
+
+.ornamental-divider > span:last-child {
+  transform: scaleX(-1);
+}
+
+.divider-star {
+  color: var(--gold-light);
+  font-size: 0.75rem;
+
+  text-shadow:
+    0 0 14px rgba(228, 198, 116, 0.34);
+}
+
+
+/* Welcome text */
+
+.welcome-copy {
+  max-width: 690px;
+  margin: 0 auto;
+
+  color: var(--mist);
+
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  line-height: 1.9;
+}
+
+.welcome-copy p {
+  margin: 0 0 1.4rem;
+}
+
+.welcome-closing {
+  margin-top: 2.2rem !important;
+
+  color: var(--ivory);
+
+  font-size: 1.08em;
+  font-style: italic;
+}
+
+
+/* ---------------------------------------------------------
+   ANIMATION
+   --------------------------------------------------------- */
+
+@keyframes logo-arrival {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+    filter:
+      blur(3px)
+      drop-shadow(
+        0 0 0 rgba(199, 162, 75, 0)
+      );
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes content-arrival {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 0.22;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes star-drift {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-38px);
+  }
+}
+
+@keyframes scroll-prompt {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 18px);
+  }
+}
+
+
+/* ---------------------------------------------------------
+   TABLETS
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 3rem;
+  }
+
+  .hero-logo-wrap {
+    width: min(76vw, 500px);
+    margin-bottom: 2.75rem;
+  }
+
+  .discover-section {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   PHONES
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .hero {
+    padding:
+      3rem
+      1.15rem
+      5.5rem;
+  }
+
+  .hero-logo-wrap {
+    width: min(92vw, 450px);
+    margin-bottom: 2.4rem;
+  }
+
+  .tagline {
+    margin-bottom: 2.25rem;
+
+    font-size: 1.08rem;
+    line-height: 1.6;
+  }
+
+  .archive-button {
+    min-width: 218px;
+
+    padding:
+      1rem
+      1.4rem;
+
+    font-size: 0.68rem;
+    letter-spacing: 0.17em;
+  }
+
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+
+  .discover-section {
+    padding:
+      6.5rem
+      1.25rem;
+  }
+
+  .section-kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.24em;
+  }
+
+  .discover-content h1 {
+    font-size: clamp(2.8rem, 14vw, 4.3rem);
+    line-height: 1.06;
+  }
+
+  .welcome-copy {
+    font-size: 1rem;
+    line-height: 1.82;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   ACCESSIBILITY
+   --------------------------------------------------------- */
+
+.archive-button:focus-visible,
+.scroll-indicator:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
