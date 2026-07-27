@@ -154,7 +154,7 @@ h1 {
   }
 }
 .hero-logo-wrap {
-  width: min(92vw, 760px);
+  width: min(62vw, 520px);
   margin: 0 auto 2rem;
 }
 
@@ -163,7 +163,8 @@ h1 {
   width: 100%;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 24px rgba(199, 162, 75, 0.16));
+  filter: drop-shadow(0 0 35px rgba(199, 162, 75, 0.16))
+  drop-shadow(0 0 80px rgba(220,185,80,.05));
 }
 
 .tagline {
