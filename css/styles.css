@@ -1833,3 +1833,55 @@ html {
         display: none;
     }
 }
+/* ==========================================================
+   MAP LOCATION INDEX
+   ========================================================== */
+
+.map-index {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    width: min(900px, 100%);
+    margin: 2rem auto 0;
+}
+
+.map-index a {
+    padding: 1.15rem 1rem;
+
+    border: 1px solid rgba(199, 162, 75, 0.28);
+    background: rgba(255, 255, 255, 0.018);
+
+    color: var(--gold-light);
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.map-index a span {
+    display: block;
+    margin-bottom: 0.45rem;
+
+    color: rgba(231, 226, 211, 0.55);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.map-index a:hover,
+.map-index a:focus-visible {
+    border-color: rgba(242, 214, 124, 0.7);
+    background: rgba(199, 162, 75, 0.08);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 700px) {
+    .map-index {
+        grid-template-columns: 1fr;
+    }
+}
