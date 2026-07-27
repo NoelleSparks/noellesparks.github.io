@@ -1561,3 +1561,59 @@ select {
   }
 
 }
+/* ==========================================================
+   WORLD ARCHIVE
+   ========================================================== */
+
+.map-section{
+
+    width:min(1400px,94vw);
+
+    margin:0 auto;
+
+    padding:4rem 0 5rem;
+
+}
+
+.world-map{
+
+    width:100%;
+
+    display:block;
+
+    border:1px solid rgba(199,162,75,.22);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45);
+
+    border-radius:8px;
+
+}
+
+.archive-entry{
+
+    width:min(850px,90vw);
+
+    margin:0 auto 7rem;
+
+    color:var(--mist);
+
+    line-height:1.9;
+
+}
+
+.archive-entry h2{
+
+    color:var(--gold-light);
+
+    font-size:2.5rem;
+
+    margin-bottom:1rem;
+
+}
+
+.archive-entry p{
+
+    font-size:1.05rem;
+
+}
