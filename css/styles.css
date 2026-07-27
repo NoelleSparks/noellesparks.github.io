@@ -1885,3 +1885,27 @@ html {
         grid-template-columns: 1fr;
     }
 }
+/* ==========================================================
+   RETURN TO MAP LINKS
+   ========================================================== */
+
+.return-to-map {
+    display: inline-block;
+    margin-top: 2rem;
+
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.return-to-map:hover,
+.return-to-map:focus-visible {
+    color: var(--gold-light);
+    transform: translateY(-2px);
+}
