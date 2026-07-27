@@ -153,3 +153,113 @@ h1 {
     max-width: 290px;
   }
 }
+.hero-logo-wrap {
+  width: min(92vw, 760px);
+  margin: 0 auto 2rem;
+}
+
+.hero-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 24px rgba(199, 162, 75, 0.16));
+}
+
+.tagline {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #f7f2e8;
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.hero-star {
+  margin: 1.5rem 0;
+  color: #c7a24b;
+  font-size: 1rem;
+  text-shadow: 0 0 18px rgba(199, 162, 75, 0.45);
+}
+
+.archive-button {
+  display: inline-block;
+  padding: 0.95rem 1.8rem;
+  border: 1px solid rgba(199, 162, 75, 0.8);
+  color: #f7f2e8;
+  background: rgba(199, 162, 75, 0.06);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+  transition:
+    background 250ms ease,
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+.archive-button:hover {
+  background: rgba(199, 162, 75, 0.14);
+  box-shadow: 0 0 28px rgba(199, 162, 75, 0.15);
+  transform: translateY(-2px);
+}
+
+.welcome-section {
+  min-height: 100vh;
+  padding: 8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(13, 26, 42, 0.96) 0%,
+      rgba(7, 16, 28, 1) 72%
+    );
+}
+
+.section-symbol {
+  width: min(220px, 55vw);
+  margin-bottom: 2rem;
+}
+
+.section-monogram {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.92;
+  filter: drop-shadow(0 0 18px rgba(199, 162, 75, 0.12));
+}
+
+.section-kicker {
+  margin: 0 0 1rem;
+  color: #c7a24b;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.72rem;
+}
+
+.welcome-section h2 {
+  margin: 0 0 2rem;
+  color: #f7f2e8;
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.welcome-copy {
+  max-width: 680px;
+  color: #d8d1c5;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.9;
+}
+
+.welcome-copy p {
+  margin: 0 0 1.25rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
