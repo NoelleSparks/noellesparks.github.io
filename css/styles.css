@@ -362,7 +362,7 @@ select {
   text-align: center;
 
   margin: 0 auto;
-  padding-top: 8vh;
+  padding-top: 14vh;
 }
 
 
@@ -371,9 +371,9 @@ select {
 .hero-logo-wrap {
   position: relative;
 
-  width: min(90vw, 900px);
+  width: min(92vw, 980px);
 
-  margin: 0 auto 1.4rem;
+  margin: 0 auto .5rem;
 
   isolation: isolate;
 }
