@@ -371,9 +371,9 @@ select {
 .hero-logo-wrap {
   position: relative;
 
-  width: min(85vw, 760px);
+  width: min(90vw, 900px);
 
-  margin: 0 auto 3rem;
+  margin: 0 auto 1.4rem;
 
   isolation: isolate;
 }
@@ -430,7 +430,7 @@ select {
 .tagline {
   max-width: 650px;
 
-  margin: 0 auto 2.75rem;
+  margin: 0 auto 2.3rem;
 
   color: var(--ivory);
 
@@ -450,7 +450,6 @@ select {
     ease
     both;
 }
-
 
 /* Primary button */
 
