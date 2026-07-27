@@ -890,18 +890,22 @@ select {
 /* Archive cards */
 
 .archive-grid {
+  width: min(100%, 980px);
+
   display: grid;
 
   grid-template-columns:
-    repeat(6, minmax(0, 1fr));
+    repeat(2, minmax(0, 1fr));
 
-  gap: 1.25rem;
+  gap:
+    1.4rem
+    1.4rem;
+
+  margin-inline: auto;
 }
 
 .archive-card {
   position: relative;
-
-  grid-column: span 2;
 
   min-height: 355px;
 
@@ -1009,12 +1013,16 @@ select {
 
 .archive-card-featured {
   grid-column:
-    2 / span 4;
+    1 / -1;
+
+  width: min(100%, 620px);
+
+  justify-self: center;
 
   min-height: 330px;
 
   padding-inline:
-    clamp(2rem, 8vw, 7rem);
+    clamp(2rem, 8vw, 6rem);
 
   border-color:
     rgba(228, 198, 116, 0.46);
@@ -1406,17 +1414,7 @@ select {
   }
 
   .archive-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-
-  .archive-card {
-    grid-column: auto;
-  }
-
-  .archive-card-featured {
-    grid-column:
-      1 / -1;
+    width: min(100%, 760px);
   }
 
 }
@@ -1506,6 +1504,8 @@ select {
   }
 
   .archive-grid {
+    width: 100%;
+
     grid-template-columns: 1fr;
 
     gap: 1rem;
@@ -1514,6 +1514,8 @@ select {
   .archive-card,
   .archive-card-featured {
     grid-column: auto;
+
+    width: 100%;
 
     min-height: 330px;
 
