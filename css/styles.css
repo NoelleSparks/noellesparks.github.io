@@ -367,7 +367,7 @@ select {
 .hero-logo-wrap {
   position: relative;
 
-  width: min(82vw, 820px);
+  width: min(92vw, 960px);
 
   margin: 0 auto 3.25rem;
 
