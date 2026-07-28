@@ -2220,3 +2220,10 @@ html {
         gap: 0.75rem;
     }
 }
+/* Center a lone character record */
+
+.character-record:only-child {
+    grid-column: 1 / -1;
+    width: min(540px, 100%);
+    justify-self: center;
+}
