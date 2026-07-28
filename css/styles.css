@@ -2227,3 +2227,10 @@ html {
     width: min(540px, 100%);
     justify-self: center;
 }
+/* Center the final record when a row contains only one character */
+
+.character-record:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: min(540px, 100%);
+    justify-self: center;
+}
