@@ -1909,3 +1909,117 @@ html {
     color: var(--gold-light);
     transform: translateY(-2px);
 }
+/* ==========================================================
+   GLOBAL SITE HEADER
+   ========================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    border-bottom: 1px solid rgba(199, 162, 75, 0.18);
+
+    background: rgba(7, 10, 24, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.site-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: min(1400px, 92vw);
+    min-height: 72px;
+    margin: 0 auto;
+}
+
+.site-brand {
+    color: var(--gold-light);
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition: color 0.25s ease;
+}
+
+.site-brand:hover,
+.site-brand:focus-visible {
+    color: var(--gold);
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.site-nav a {
+    position: relative;
+
+    padding: 0.4rem 0;
+
+    color: rgba(231, 226, 211, 0.72);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition: color 0.25s ease;
+}
+
+.site-nav a::after {
+    content: "";
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform 0.25s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    color: var(--gold-light);
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+@media (max-width: 600px) {
+    .site-header-inner {
+        min-height: 64px;
+    }
+
+    .site-brand {
+        font-size: 0.76rem;
+        letter-spacing: 0.11em;
+    }
+
+    .site-nav {
+        gap: 1rem;
+    }
+
+    .site-nav a {
+        font-size: 0.63rem;
+        letter-spacing: 0.08em;
+    }
+
+    .site-nav a:first-child {
+        display: none;
+    }
+}
